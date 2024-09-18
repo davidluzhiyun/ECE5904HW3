@@ -1,0 +1,31 @@
+{
+  "name": "ece5904hw2",
+  "version": "1.0.0",
+  "description": "Homework 2",
+  "main": "index.js",
+  "scripts": {
+    "build": "npx tsc",
+    "start": "node dist/server.js",
+    "dev": "nodemon server.ts",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://gitlab.oit.duke.edu/zl303/ece5904hw2"
+  },
+  "author": "David Lu",
+  "license": "ISC",
+  "devDependencies": {
+    "@types/express": "^4.17.21",
+    "@types/node": "^22.5.4",
+    "nodemon": "^3.1.4",
+    "ts-node": "^10.9.2",
+    "typescript": "^5.6.2"
+  },
+  "dependencies": {
+    "@types/cors": "^2.8.17",
+    "body-parser": "^2.0.1",
+    "cors": "^2.8.5",
+    "express": "^5.0.0"
+  }
+}
