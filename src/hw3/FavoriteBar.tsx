@@ -17,11 +17,11 @@ export default function FavoriteBar({ weatherData, setWeatherData }: FavoriteBar
     // hook for the local favorite list
     const [favorites,setFavorites] = useState<FavoriteItem[]>([]);
     // hook for selected item
-    const [selectedZip, setSelectedZip] = useState<string>("");
+    const [selectedZip, setSelectedZip] = useState<string|number>(-1);
 
     async function fetchFavorites(){
         // fetch the favorite list from db
-        const favoritesData = await fetch("/favorites")
+        const favoritesData = await fetch("http://localhost:3000/favorites",{mode:"cors"})
             .catch((error) => {console.log(error);
                 throw error;
             });
@@ -77,7 +77,7 @@ export default function FavoriteBar({ weatherData, setWeatherData }: FavoriteBar
         if (favorites.some(favorite => favorite.zip === weatherData.validZip)) {
           setSelectedZip(weatherData.validZip); 
         } else {
-          setSelectedZip(""); 
+          setSelectedZip(-1); 
         }
     }, [weatherData.validZip, favorites]);
 

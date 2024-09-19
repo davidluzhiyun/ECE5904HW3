@@ -7,6 +7,7 @@ import cors from "cors";
 const app = express();
 // set port
 const port = 3000;
+app.use(cors());
 
 // set the ./public directory as the static directory
 app.use(express.static("public"));
@@ -17,7 +18,6 @@ app.use(bodyParser.json());
 // mount the router on the app
 app.use("/favorites", favoriteRouter);
 
-app.use(cors());
 
 // starts the server listening on the specified port
 app.listen(port, ()=>{
