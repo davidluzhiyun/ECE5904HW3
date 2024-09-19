@@ -18,6 +18,9 @@ export default function FavoriteBar({ weatherData, setWeatherData }: FavoriteBar
     const [favorites,setFavorites] = useState<FavoriteItem[]>([]);
     // hook for selected item
     const [selectedZip, setSelectedZip] = useState<string>("");
+    // hooks for the buttons
+    const [isAddDisabled, setIsAddDisabled] = useState<boolean>(true);
+    const [isDeleteDisabled, setIsDeleteDisabled] = useState<boolean>(true);
 
     async function fetchFavorites(){
         // fetch the favorite list from db
@@ -35,6 +38,10 @@ export default function FavoriteBar({ weatherData, setWeatherData }: FavoriteBar
     // fetch on mount
     // note to self: special handling for using async in useEffect
     useEffect(() => {
+        // prevent weird behavior in the buttons
+        // Thy somtimes refuse to be disabled
+        setIsAddDisabled(true);
+        setIsDeleteDisabled(true);
         const doFetch =  async () => {
             const fav = await fetchFavorites();
             console.log(fav);
@@ -72,17 +79,50 @@ export default function FavoriteBar({ weatherData, setWeatherData }: FavoriteBar
     };
 
     // update selection
-    // to be changed later for the buttions
+    // to be changed later for the buttons
     useEffect(() => {
         if (favorites.some(favorite => favorite.zip === weatherData.validZip)) {
           setSelectedZip(weatherData.validZip); 
+          if(weatherData.validZip !== ""){
+            setIsAddDisabled(true);
+            setIsDeleteDisabled(false);
+          }
+          else{
+            // just to ensure no surprise behavior for when selectedZip is ""
+            setIsAddDisabled(true);
+            setIsDeleteDisabled(true);
+          }
         } else {
-          setSelectedZip(""); 
+            // Please stop unexpectedly turning on
+            if(weatherData.validZip === ""){
+                setIsAddDisabled(true);
+                setIsDeleteDisabled(false);
+            }
+            else{
+            setIsAddDisabled(false);
+            setIsDeleteDisabled(true); 
+            }
         }
     }, [weatherData.validZip, favorites]);
 
+// placeholder functions for testing
+  // Add a favorite
+  const handleAddFavorite = () => {
+    const newFavorite: FavoriteItem = { zip: weatherData.validZip, name: `Location ${weatherData.validZip}` };
+    setFavorites([...favorites, newFavorite]); // Update local favorites
+    // TODO: Send POST request to save favorite in backend
+  };
+
+  // Delete a favorite
+  const handleDeleteFavorite = () => {
+    const updatedFavorites = favorites.filter(fav => fav.zip !== weatherData.validZip);
+    setFavorites(updatedFavorites); // Update local favorites
+    // TODO: Send DELETE request to backend to remove favorite
+  };
+
     return (
         <>
+          <button onClick={handleAddFavorite} disabled={isAddDisabled}>Add to Favorites</button>
           <label htmlFor="favorites_bar">Go to favorite:</label>
           <select
             id="favorites_bar"
@@ -96,6 +136,7 @@ export default function FavoriteBar({ weatherData, setWeatherData }: FavoriteBar
               </option>
             ))}
           </select>
+          <button onClick={handleDeleteFavorite} disabled={isDeleteDisabled}>Delete Favorite</button>
         </>
       );
 }
