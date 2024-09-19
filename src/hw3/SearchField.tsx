@@ -83,7 +83,7 @@ export default function SearchField({ weatherData, setWeatherData }: SearchField
     };
 
     // handle external changes to weatherdata
-    // I am not doing the search here because it leads feed back loops
+    // I am not doing the search here because it leads to feed back loops
     useEffect(()=>{
         setVal(weatherData.validZip)
     },  
