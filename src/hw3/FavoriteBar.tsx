@@ -59,8 +59,8 @@ export default function FavoriteBar({ weatherData, setWeatherData }: FavoriteBar
                 // for this reson console would say uncaught error
                 throw error;
             });
-        console.log(data);
         const json = await data.json();
+        console.log(json);
         return json;
     }
 
