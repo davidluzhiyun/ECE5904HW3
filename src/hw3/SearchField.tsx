@@ -82,14 +82,12 @@ export default function SearchField({ weatherData, setWeatherData }: SearchField
         setVal(event.target.value);
     };
 
-    // // handling for weather data change from favorite bar
-    // useEffect(()=>{
-    //     setVal(weatherData.validZip)
-    //     const doSearchZip = async () =>{
-    //         await onAsynButtonClick();
-    //     }
-    //     doSearchZip();
-    // },[weatherData.validZip]);
+    // handle external changes to weatherdata
+    // I am not doing the search here because it leads feed back loops
+    useEffect(()=>{
+        setVal(weatherData.validZip)
+    },  
+    [weatherData]);
     
     return(
         <>

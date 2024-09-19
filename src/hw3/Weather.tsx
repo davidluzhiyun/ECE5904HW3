@@ -9,10 +9,10 @@ export interface WeatherData{
 
 export function Weather(){
    const [globalWeatherData, setWeatherData] = useState<WeatherData>({validZip:"",metricSystemFlag:false,payload:undefined});
-
+    
    //test searchField
    function onTestClick(){
-    setWeatherData({...globalWeatherData,validZip:"27708"});
+        setWeatherData({...globalWeatherData,validZip:"27708"});
     return;
    } 
 
