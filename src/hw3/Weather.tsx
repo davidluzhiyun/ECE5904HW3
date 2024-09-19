@@ -1,5 +1,6 @@
 import { useState } from "react";
 import SearchField from "./SearchField";
+import FavoriteBar from "./FavoriteBar";
 
 export interface WeatherData{
     validZip:string;
@@ -18,7 +19,8 @@ export function Weather(){
 
    return (<>
     <button onClick={onTestClick}>Test</button>
-   <SearchField weatherData={globalWeatherData} setWeatherData={setWeatherData}></SearchField>
+    <SearchField weatherData={globalWeatherData} setWeatherData={setWeatherData}></SearchField>
+    <FavoriteBar weatherData={globalWeatherData} setWeatherData={setWeatherData}></FavoriteBar>
     </>
     );
 }
