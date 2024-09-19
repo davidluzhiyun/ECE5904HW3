@@ -17,7 +17,7 @@ export default function FavoriteBar({ weatherData, setWeatherData }: FavoriteBar
     // hook for the local favorite list
     const [favorites,setFavorites] = useState<FavoriteItem[]>([]);
     // hook for selected item
-    const [selectedZip, setSelectedZip] = useState<string|number>(-1);
+    const [selectedZip, setSelectedZip] = useState<string>("");
 
     async function fetchFavorites(){
         // fetch the favorite list from db
@@ -77,7 +77,7 @@ export default function FavoriteBar({ weatherData, setWeatherData }: FavoriteBar
         if (favorites.some(favorite => favorite.zip === weatherData.validZip)) {
           setSelectedZip(weatherData.validZip); 
         } else {
-          setSelectedZip(-1); 
+          setSelectedZip(""); 
         }
     }, [weatherData.validZip, favorites]);
 
@@ -88,6 +88,8 @@ export default function FavoriteBar({ weatherData, setWeatherData }: FavoriteBar
             id="favorites_bar"
             value={selectedZip}
             onChange={handleSelectChange}>
+            {/* Hidden option when nothing is selected */}
+            <option value="" disabled hidden> </option>
             {favorites.map((favorite) => (
               <option key={favorite.zip} value={favorite.zip}>
                 {favorite.name}
