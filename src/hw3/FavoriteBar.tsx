@@ -170,7 +170,7 @@ export default function FavoriteBar({ weatherData, setWeatherData }: FavoriteBar
           </option>
         ))}
       </select>
-      <button className="favorite-bar-button" onClick={handleDeleteFavorite} disabled={isDeleteDisabled}>
+      <button className="favorite-bar-button-delete" onClick={handleDeleteFavorite} disabled={isDeleteDisabled}>
         Delete Favorite
       </button>
     </div>

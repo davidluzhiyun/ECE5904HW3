@@ -14,8 +14,8 @@
     font-size: 14px;
     color: white;
     background-color: #024878;
-    padding: 8px;
     border: 1px solid black;
+    padding-left: 15px;
     border-radius: 0; /* Make it a rectangle */
     width: 233px; /*-2 to make the border inner*/
     height: 33px;

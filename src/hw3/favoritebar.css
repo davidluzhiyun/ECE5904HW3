@@ -17,11 +17,18 @@
     height: 40px;
     margin-right: 20px;
 }
+.favorite-bar-button-delete {
+    font-size: 13px;
+    color: white;
+    background-color: #024878;
+    border-radius: 5;
+    width: 134px; 
+    height: 40px;
+}
 
 .favorite-bar-button:disabled {
-    color: #888888; /* Change text color */
-    background-color: #024878; /* Keep original button color */
-    cursor: default; /* Change cursor to default for disabled state */
+    color: #888888; 
+    background-color: #024878; 
 }
 
 .favorite-bar-select {
@@ -29,8 +36,9 @@
     color: white;
     background-color: #024878;
     border: 1px solid black;
-    border-radius: 0; /* Rectangle */
+    border-radius: 0; 
     padding: 8px;
-    width: 200px; /* Adjust as needed */
-    margin: 0 10px; /* Space around dropdown */
+    width: 233px;
+    height: 33;
+    margin-left: 28;
 }
