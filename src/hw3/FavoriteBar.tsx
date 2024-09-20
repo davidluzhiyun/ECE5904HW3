@@ -105,20 +105,49 @@ export default function FavoriteBar({ weatherData, setWeatherData }: FavoriteBar
         }
     }, [weatherData.validZip, favorites]);
 
-// placeholder functions for testing
+
   // Add a favorite
-  const handleAddFavorite = () => {
-    const newFavorite: FavoriteItem = { zip: weatherData.validZip, name: `Location ${weatherData.validZip}` };
+  const handleAddFavorite = async () => {
+    //I am leaving the type issue here since it would a headache to specify the structure of that gigantic json
+    const locationName = weatherData?.payload?.location?.name + ", " + weatherData?.payload?.location?.region;
+    const newFavorite: FavoriteItem = { zip: weatherData.validZip, name: locationName};
     setFavorites([...favorites, newFavorite]); // Update local favorites
     // TODO: Send POST request to save favorite in backend
+    await fetch("http://localhost:3000/favorites", {
+        // method type
+        method:"POST",
+        mode:"cors",
+
+        // stuff to post
+        body:JSON.stringify({
+            zip:weatherData.validZip,
+            name:locationName
+        }),
+
+        //headers
+        headers: { "Content-type": "application/json"} 
+
+    })
   };
 
   // Delete a favorite
-  const handleDeleteFavorite = () => {
+  const handleDeleteFavorite = async () => {
     const updatedFavorites = favorites.filter(fav => fav.zip !== weatherData.validZip);
     setFavorites(updatedFavorites); // Update local favorites
     // TODO: Send DELETE request to backend to remove favorite
+    await fetch(`http://localhost:3000/favorites/${weatherData.validZip}`, {
+        // method type
+        method:"DELETE",
+        mode:"cors",
+    })                
+    .catch((error) => {console.log(error);
+        throw error;
+    });
   };
+  // Behavior change from hw2
+  // No longer fetch and reload in session
+  // Add/Delete no long change input box content
+  // Due to how project is structured rn no longer worth it to implement these additional behavior
 
     return (
         <>
@@ -132,7 +161,7 @@ export default function FavoriteBar({ weatherData, setWeatherData }: FavoriteBar
             <option value="" disabled hidden> </option>
             {favorites.map((favorite) => (
               <option key={favorite.zip} value={favorite.zip}>
-                {favorite.name}
+                {favorite.name + " (" + favorite.zip + ")"}
               </option>
             ))}
           </select>
