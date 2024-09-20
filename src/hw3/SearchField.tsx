@@ -14,13 +14,13 @@ export default function SearchField({ weatherData, setWeatherData }: SearchField
 
     //states
     // local state to track the value of input field
-    const[val , setVal] = useState<string>("");
+    const [val, setVal] = useState<string>("");
     // local state to enable the button
     const [disableButton, setdisableButton] = useState(true);
 
     // helpers
 
-    function isZip(my_str:string) {
+    function isZip(my_str: string) {
         // based on https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/RegExp/test
         // str is the str that we recieve from the input
         // regex to test if a US zip code is entered
@@ -29,15 +29,16 @@ export default function SearchField({ weatherData, setWeatherData }: SearchField
         return result;
     }
 
-    async function fetchData(zip:string) {
+    async function fetchData(zip: string) {
         // fetches data from api with fetch API
         const base = "http://api.weatherapi.com/v1/forecast.json?key=";
         const apiKey = "79c4fe56c5264162aba15443240309";
         const ending = "&days=3&aqi=no&alerts=no";
         const url = base + apiKey + "&q=" + zip + ending;
         const data = await fetch(url)
-        // if there is a error for fetch log and alert
-            .catch((error) => {console.log(error);
+            // if there is a error for fetch log and alert
+            .catch((error) => {
+                console.log(error);
                 alert(error);
                 // revert to previous the valid zip or blank
                 console.log(val);
@@ -52,9 +53,9 @@ export default function SearchField({ weatherData, setWeatherData }: SearchField
     }
 
 
-    async function onAsynButtonClick () {
+    async function onAsynButtonClick() {
         // test if input is a valid US zip code
-        if(!isZip(val)){
+        if (!isZip(val)) {
             alert("Invalid US zip code");
             console.log("Invalid US zip code");
             setVal(weatherData.validZip);
@@ -66,7 +67,7 @@ export default function SearchField({ weatherData, setWeatherData }: SearchField
         console.log(tempResponseData)
 
         // If it the json response has property error
-        if (tempResponseData.error){
+        if (tempResponseData.error) {
             //alert error
             alert(tempResponseData["error"]["message"]);
             console.log(tempResponseData["error"]["message"])
@@ -76,7 +77,7 @@ export default function SearchField({ weatherData, setWeatherData }: SearchField
         }
 
         // If the zip pasts all tests update reference of weatherData
-        setWeatherData({...weatherData,validZip:val,payload:tempResponseData});
+        setWeatherData({ ...weatherData, validZip: val, payload: tempResponseData });
         return;
     }
 
@@ -89,12 +90,13 @@ export default function SearchField({ weatherData, setWeatherData }: SearchField
 
     // handle external changes to weatherdata
     // I am not doing the search here because it leads to feed back loops
-    useEffect(()=>{
-        setVal(weatherData.validZip)
-    },  
-    [weatherData]);
-    
-    return(
+    useEffect(() => {
+        setVal(weatherData.validZip);
+        setdisableButton(false);
+    },
+        [weatherData]);
+
+    return (
         <div className="search-field-container">
             <div className="search-field-label">Enter a Zip Code</div>
             <input

@@ -1,0 +1,36 @@
+.favorite-bar-container {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+
+.favorite-bar-label {
+    font-size: 14px;
+}
+
+.favorite-bar-button {
+    font-size: 14px;
+    color: white;
+    background-color: #024878;
+    border-radius: 5;
+    width: 146px; 
+    height: 40px;
+    margin-right: 20px;
+}
+
+.favorite-bar-button:disabled {
+    color: #888888; /* Change text color */
+    background-color: #024878; /* Keep original button color */
+    cursor: default; /* Change cursor to default for disabled state */
+}
+
+.favorite-bar-select {
+    font-size: 14px;
+    color: white;
+    background-color: #024878;
+    border: 1px solid black;
+    border-radius: 0; /* Rectangle */
+    padding: 8px;
+    width: 200px; /* Adjust as needed */
+    margin: 0 10px; /* Space around dropdown */
+}
