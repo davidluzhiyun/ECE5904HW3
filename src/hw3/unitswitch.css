@@ -1,0 +1,14 @@
+.container{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.unit-switch-button {
+    font-size: 14px;
+    color: white;
+    background-color: #024878;
+    border-radius: 5;
+    width: 146px; 
+    height: 40px; 
+    margin-top: 12px;
+}
