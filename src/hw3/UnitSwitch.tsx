@@ -27,6 +27,12 @@ export default function UnitSwitch({ weatherData, setWeatherData }: UnitSwitchPr
 
     function onSwitchUnit(){
         setWeatherData({ ...weatherData, metricSystemFlag:!(weatherData.metricSystemFlag)});
+        if(weatherData.metricSystemFlag){
+            setUnitText(toImperialText);
+        }
+        else{
+            setUnitText(toMetricText);
+        }
     }
     return(<div className="container">
             <button onClick={onSwitchUnit} className="unit-switch-button">{unitText}</button>

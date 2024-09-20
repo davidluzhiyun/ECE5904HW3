@@ -11,8 +11,24 @@ export default function SunriseAndWind({ weatherData }: SunriseAndWindProp) {
     const[sunrise, setSunrise] = useState<string>("-");
     const[sunset, setSunset] = useState<string>("-");
     const[windSpeed, setWindSpeed] = useState<string>("-");
+    const[windSpeedUnit, setWindSpeedUnit] = useState<string>("-");
     const[windDirection, setWindDirection] = useState<string>("-");
     useEffect(()=>{
+        if(weatherData.metricSystemFlag){
+            setWindSpeedUnit("KPH");
+        }
+        else{
+            setWindSpeedUnit("MPH");
+        }
+    },[]);
+
+    useEffect(()=>{
+        if(weatherData.metricSystemFlag){
+            setWindSpeedUnit("KPH");
+        }
+        else{
+            setWindSpeedUnit("MPH");
+        }
         if (weatherData.validZip===""){
             setSunrise("-");
             setSunset("-");
@@ -31,5 +47,24 @@ export default function SunriseAndWind({ weatherData }: SunriseAndWindProp) {
             }
         }
     }
-    ,[weatherData]);    
+    ,[weatherData]);
+    return(
+        <div>
+            <div>
+                <div>
+                    <div>Sunrise:</div><div>{sunrise}</div>
+                    <div>Sunset:</div><div>{sunset}</div>
+                </div>
+                <div>
+
+                </div>
+            </div>
+            <div>
+                <div>Wind</div>
+                <div>{windSpeed}</div>
+                <div>{windSpeedUnit}</div>
+                <div>{windDirection}</div>
+            </div>
+        </div>
+    );
 }
