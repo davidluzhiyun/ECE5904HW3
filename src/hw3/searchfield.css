@@ -1,0 +1,39 @@
+/* SearchField.css */
+.search-field-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.search-field-label {
+    font-size: 20px;
+    margin-bottom: 17px;
+}
+
+.search-field-input {
+    font-size: 14px;
+    color: white;
+    background-color: #024878;
+    padding: 8px;
+    border: 1px solid black;
+    border-radius: 0; /* Make it a rectangle */
+    width: 233px; /*-2 to make the border inner*/
+    height: 33px;
+    outline: none;
+}
+
+.search-field-button {
+    font-size: 14px;
+    color: white;
+    background-color: #024878;
+    border: none;
+    border-radius: 5;
+    width: 146px; 
+    height: 40px; 
+    margin-top: 12px;
+}
+
+.search-field-button:disabled {
+    color: #888888; 
+    background-color: #024878; 
+}

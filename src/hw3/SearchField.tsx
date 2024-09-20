@@ -1,5 +1,6 @@
 import { SetStateAction, useEffect, useState } from "react";
 import { WeatherData } from "./Weather";
+import "./searchfield.css"
 
 // Define the props interface
 interface SearchFieldProps {
@@ -94,11 +95,22 @@ export default function SearchField({ weatherData, setWeatherData }: SearchField
     [weatherData]);
     
     return(
-        <>
-         <div>Enter a Zip Code</div>
-         <input value={val} onChange={handleInputChange} onInput={()=>setdisableButton(false)}></input>
-         <button onClick={onAsynButtonClick} disabled={disableButton}>Get Forecast</button>
-        </>
+        <div className="search-field-container">
+            <div className="search-field-label">Enter a Zip Code</div>
+            <input
+                className="search-field-input"
+                value={val}
+                onChange={handleInputChange}
+                onInput={() => setdisableButton(false)}
+            />
+            <button
+                className="search-field-button"
+                onClick={onAsynButtonClick}
+                disabled={disableButton}
+            >
+                Get Forecast
+            </button>
+        </div>
     );
 
 }
