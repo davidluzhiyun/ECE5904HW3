@@ -11,6 +11,12 @@ interface SearchFieldProps {
 export default function SearchField({ weatherData, setWeatherData }: SearchFieldProps) {
     // takes a weatherData and the useState setter
 
+    //states
+    // local state to track the value of input field
+    const[val , setVal] = useState<string>("");
+    // local state to enable the button
+    const [disableButton, setdisableButton] = useState(true);
+
     // helpers
 
     function isZip(my_str:string) {
@@ -44,8 +50,6 @@ export default function SearchField({ weatherData, setWeatherData }: SearchField
         return json;
     }
 
-    // local state to track the value of input field
-    const[val , setVal] = useState<string>("");
 
     async function onAsynButtonClick () {
         // test if input is a valid US zip code
@@ -92,8 +96,8 @@ export default function SearchField({ weatherData, setWeatherData }: SearchField
     return(
         <>
          <div>Enter a Zip Code</div>
-         <input value={val} onChange={handleInputChange}></input>
-         <button onClick={onAsynButtonClick}>Get Forecast</button>
+         <input value={val} onChange={handleInputChange} onInput={()=>setdisableButton(false)}></input>
+         <button onClick={onAsynButtonClick} disabled={disableButton}>Get Forecast</button>
         </>
     );
 
