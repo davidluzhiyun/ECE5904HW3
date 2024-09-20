@@ -84,29 +84,26 @@ export default function FavoriteBar({ weatherData, setWeatherData }: FavoriteBar
   // update selection
   // to be changed later for the buttons
   useEffect(() => {
-    if (favorites.some(favorite => favorite.zip === weatherData.validZip)) {
-      setSelectedZip(weatherData.validZip);
-      if (weatherData.validZip !== "") {
-        setIsAddDisabled(true);
-        setIsDeleteDisabled(false);
-      }
-      else {
-        // just to ensure no surprise behavior for when selectedZip is ""
-        setIsAddDisabled(true);
-        setIsDeleteDisabled(true);
-      }
-    } else {
-      // Please stop unexpectedly turning on
-      if (weatherData.validZip === "") {
-        setIsAddDisabled(true);
-        setIsDeleteDisabled(true);
-      }
-      else {
-        setIsAddDisabled(false);
-        setIsDeleteDisabled(true);
-      }
+    if (weatherData.validZip === "") {
+      setSelectedZip("");
+      setIsAddDisabled(true);
+      setIsDeleteDisabled(true);
+      return;
     }
-  }, [weatherData.validZip, favorites]);
+    else if (favorites.some(favorite => favorite.zip === weatherData.validZip)) {
+      setSelectedZip(weatherData.validZip);
+      setIsAddDisabled(true);
+      setIsDeleteDisabled(false);
+      console.log(isDeleteDisabled);
+      console.log(weatherData.validZip);
+    } else {
+      setSelectedZip("");
+      setIsAddDisabled(false);
+      setIsDeleteDisabled(true);
+    }
+  }
+    ,
+    [weatherData.validZip, favorites]);
 
 
   // Add a favorite

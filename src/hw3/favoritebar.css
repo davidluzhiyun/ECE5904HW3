@@ -30,6 +30,10 @@
     color: #888888; 
     background-color: #024878; 
 }
+.favorite-bar-button-delete:disabled {
+    color: #888888; 
+    background-color: #024878; 
+}
 
 .favorite-bar-select {
     font-size: 14px;
