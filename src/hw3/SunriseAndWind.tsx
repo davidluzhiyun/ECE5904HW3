@@ -53,10 +53,9 @@ export default function SunriseAndWind({ weatherData }: SunriseAndWindProp) {
             <div>
                 <div>
                     <div>Sunrise:</div><div>{sunrise}</div>
-                    <div>Sunset:</div><div>{sunset}</div>
                 </div>
                 <div>
-
+                    <div>Sunset:</div><div>{sunset}</div>
                 </div>
             </div>
             <div>
