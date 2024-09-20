@@ -2,10 +2,12 @@
     display: flex;
     flex-direction: row;
     align-items: center;
+    margin: auto;
 }
 
 .favorite-bar-label {
     font-size: 14px;
+    margin-right: 28px;
 }
 
 .favorite-bar-button {
@@ -24,6 +26,7 @@
     border-radius: 5;
     width: 134px; 
     height: 40px;
+    margin-left: 15px;
 }
 
 .favorite-bar-button:disabled {
@@ -43,6 +46,5 @@
     border-radius: 0; 
     padding: 8px;
     width: 233px;
-    height: 33;
-    margin-left: 28;
+    height: 33px;
 }
