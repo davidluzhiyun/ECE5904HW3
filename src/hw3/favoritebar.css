@@ -47,4 +47,16 @@
     padding: 8px;
     width: 233px;
     height: 33px;
+    outline: none;
+}
+.favorite-bar-select:focus {
+    font-size: 14px;
+    color: white;
+    background-color: #024878;
+    border: 1px solid black;
+    border-radius: 0; 
+    padding: 8px;
+    width: 233px;
+    height: 33px;
+    outline: none;
 }

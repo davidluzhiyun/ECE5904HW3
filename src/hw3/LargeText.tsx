@@ -3,11 +3,11 @@ import { WeatherData } from "./Weather";
 import "./largetext.css"
 
 // Define the props interface
-interface BoldTextProps {
+interface LargeTextProps {
     weatherData: WeatherData;
 }
 
-export default function LargeText({ weatherData }: BoldTextProps) {
+export default function LargeText({ weatherData }: LargeTextProps) {
     const [temp, setTemp] = useState<string>("-");
     const [feltTemp, setfeltTemp] = useState<string>("-");
     const [location, setLocation] = useState<string>("-");
