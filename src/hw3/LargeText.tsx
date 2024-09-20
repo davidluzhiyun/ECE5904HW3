@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { WeatherData } from "./Weather";
-import "./favoritebar.css"
+import "./largetext.css"
 
 // Define the props interface
 interface BoldTextProps {
@@ -30,11 +30,11 @@ export default function LargeText({ weatherData }: BoldTextProps) {
         }
     }
     ,[weatherData]);
-    return(
-        <div>
-            <div>{temp}</div>
-            <div>Feels like {feltTemp}</div>
-            <div>{location}</div>
+    return (
+        <div className="large-text-container">
+            <div className="large-text-temp">{temp}</div>
+            <div className="large-text-feels-like">Feels like {feltTemp}</div>
+            <div className="large-text-location">{location}</div>
         </div>
-    )
+    );
 }
