@@ -21,7 +21,7 @@ export default function LargeText({ weatherData }: BoldTextProps) {
             setLocation(weatherData?.payload?.location?.name + ", " + weatherData?.payload?.location?.region);
             if (weatherData.metricSystemFlag){
                 setTemp(weatherData?.payload?.current?.temp_c + "°C");
-                setfeltTemp(weatherData?.payload?.current?.feelslike_C + "°C");
+                setfeltTemp(weatherData?.payload?.current?.feelslike_c + "°C");
             }
             else{
                 setTemp(weatherData?.payload?.current?.temp_f + "°F");

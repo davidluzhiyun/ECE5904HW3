@@ -75,7 +75,7 @@ export default function FavoriteBar({ weatherData, setWeatherData }: FavoriteBar
   }
 
   // Handle dropdown selection change
-  const handleSelectChange = async (event: React.ChangeEvent<HTMLSelectElement>) => {
+  const onSelectChange = async (event: React.ChangeEvent<HTMLSelectElement>) => {
     const selectedZip = event.target.value;
     const searchResult = await fetchData(selectedZip);
     setWeatherData({ ...weatherData, validZip: selectedZip, payload: searchResult });
@@ -107,7 +107,7 @@ export default function FavoriteBar({ weatherData, setWeatherData }: FavoriteBar
 
 
   // Add a favorite
-  const handleAddFavorite = async () => {
+  const onAddFavorite = async () => {
     //I am leaving the type issue here since it would a headache to specify the structure of that gigantic json
     const locationName = weatherData?.payload?.location?.name + ", " + weatherData?.payload?.location?.region;
     const newFavorite: FavoriteItem = { zip: weatherData.validZip, name: locationName };
@@ -131,7 +131,7 @@ export default function FavoriteBar({ weatherData, setWeatherData }: FavoriteBar
   };
 
   // Delete a favorite
-  const handleDeleteFavorite = async () => {
+  const onDeleteFavorite = async () => {
     const updatedFavorites = favorites.filter(fav => fav.zip !== weatherData.validZip);
     setFavorites(updatedFavorites); // Update local favorites
     // TODO: Send DELETE request to backend to remove favorite
@@ -151,7 +151,7 @@ export default function FavoriteBar({ weatherData, setWeatherData }: FavoriteBar
   // Due to how project is structured rn no longer worth it to implement these additional behavior
   return (
     <div className="favorite-bar-container">
-      <button className="favorite-bar-button" onClick={handleAddFavorite} disabled={isAddDisabled}>
+      <button className="favorite-bar-button" onClick={onAddFavorite} disabled={isAddDisabled}>
         Add to Favorites
       </button>
       <label className="favorite-bar-label" htmlFor="favorites_bar">Go to favorite:</label>
@@ -159,7 +159,7 @@ export default function FavoriteBar({ weatherData, setWeatherData }: FavoriteBar
         id="favorites_bar"
         className="favorite-bar-select"
         value={selectedZip}
-        onChange={handleSelectChange}>
+        onChange={onSelectChange}>
         <option value="" disabled hidden> </option>{/*Hidden option when nothing is selected*/}
         {favorites.map((favorite) => (
           <option key={favorite.zip} value={favorite.zip}>
@@ -167,7 +167,7 @@ export default function FavoriteBar({ weatherData, setWeatherData }: FavoriteBar
           </option>
         ))}
       </select>
-      <button className="favorite-bar-button-delete" onClick={handleDeleteFavorite} disabled={isDeleteDisabled}>
+      <button className="favorite-bar-button-delete" onClick={onDeleteFavorite} disabled={isDeleteDisabled}>
         Delete Favorite
       </button>
     </div>
