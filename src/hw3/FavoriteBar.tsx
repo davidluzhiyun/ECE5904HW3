@@ -77,7 +77,7 @@ export default function FavoriteBar({ weatherData, setWeatherData }: FavoriteBar
   // Handle dropdown selection change
   const handleSelectChange = async (event: React.ChangeEvent<HTMLSelectElement>) => {
     const selectedZip = event.target.value;
-    const searchResult = fetchData(selectedZip);
+    const searchResult = await fetchData(selectedZip);
     setWeatherData({ ...weatherData, validZip: selectedZip, payload: searchResult });
   };
 
