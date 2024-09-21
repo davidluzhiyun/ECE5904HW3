@@ -3,7 +3,7 @@ import { WeatherData } from "./Weather";
 import "./forecastbox.css"
 
 // Define the props interface
-interface ForcastBoxProp {
+interface ForecastBoxProp {
     weatherData: WeatherData;
     dayNumber: number;
 }
@@ -22,7 +22,7 @@ function formatDate(originalDate : string) {
     return `${month} ${day}`;
 }
 
-export default function ForcastBox({weatherData, dayNumber}: ForcastBoxProp) {
+export default function ForcastBox({weatherData, dayNumber}: ForecastBoxProp) {
     const[date, setDate] = useState<string>("");
     const[highTemp, setHighTemp] = useState<string>("");
     const[lowTemp, setLowTemp] = useState<string>("");

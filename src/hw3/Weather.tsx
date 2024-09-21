@@ -4,7 +4,7 @@ import FavoriteBar from "./FavoriteBar";
 import LargeText from "./LargeText";
 import UnitSwitch from "./UnitSwitch";
 import SunriseAndWind from "./SunriseAndWind";
-import ForcastBox from "./ForecastBox";
+import ForecastBar from "./ForecastBar";
 
 export interface WeatherData{
     validZip:string;
@@ -22,7 +22,7 @@ export function Weather(){
     <FavoriteBar weatherData={globalWeatherData} setWeatherData={setWeatherData}></FavoriteBar>
     <UnitSwitch weatherData={globalWeatherData} setWeatherData={setWeatherData}></UnitSwitch>
     <SunriseAndWind weatherData={globalWeatherData}></SunriseAndWind>
-    <ForcastBox weatherData={globalWeatherData} dayNumber={0}></ForcastBox>
+    <ForecastBar weatherData={globalWeatherData}></ForecastBar>
     </>
     );
 }
