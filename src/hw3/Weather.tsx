@@ -4,6 +4,7 @@ import FavoriteBar from "./FavoriteBar";
 import LargeText from "./LargeText";
 import UnitSwitch from "./UnitSwitch";
 import SunriseAndWind from "./SunriseAndWind";
+import ForcastBox from "./ForecastBox";
 
 export interface WeatherData{
     validZip:string;
@@ -13,14 +14,15 @@ export interface WeatherData{
 
 export function Weather(){
    const [globalWeatherData, setWeatherData] = useState<WeatherData>({validZip:"",metricSystemFlag:false,payload:undefined});
-    
 
+   
    return (<>
     <SearchField weatherData={globalWeatherData} setWeatherData={setWeatherData}></SearchField>
     <LargeText weatherData={globalWeatherData}></LargeText>
     <FavoriteBar weatherData={globalWeatherData} setWeatherData={setWeatherData}></FavoriteBar>
     <UnitSwitch weatherData={globalWeatherData} setWeatherData={setWeatherData}></UnitSwitch>
     <SunriseAndWind weatherData={globalWeatherData}></SunriseAndWind>
+    <ForcastBox weatherData={globalWeatherData} dayNumber={0}></ForcastBox>
     </>
     );
 }

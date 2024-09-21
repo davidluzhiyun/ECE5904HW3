@@ -43,7 +43,7 @@ export default function SunriseAndWind({ weatherData }: SunriseAndWindProp) {
                 setWindSpeed(weatherData?.payload?.current?.wind_kph);
             }
             else{
-                setWindSpeed(weatherData?.payload?.current?.wind_mph)
+                setWindSpeed(weatherData?.payload?.current?.wind_mph);
             }
         }
     }
