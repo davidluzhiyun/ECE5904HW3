@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import { WeatherData } from "./Weather";
+import "./forecastbox.css"
 
 // Define the props interface
 interface ForcastBoxProp {
@@ -52,14 +53,17 @@ export default function ForcastBox({weatherData, dayNumber}: ForcastBoxProp) {
     return(            
     <div className="forecast-container">
         <div className="forecast-date">{date}</div>
-        <div className="forecast-column1">
-            <div>H:</div>
-            <div>L:</div>
+        <div className="forecast-temperature">
+            <div className="forecast-column1">
+                <div>H:</div>
+                <div>L:</div>
+            </div>
+            <div className="forecast-column2">
+                <div>{highTemp}</div>
+                <div>{lowTemp}</div>
+            </div>
         </div>
-        <div className="forecast-column2">
-            <div>{highTemp}</div>
-            <div>{lowTemp}</div>
-        </div>
+        {/* Show pic only when there is valid url to prevent unexpected behavior in testing */}
         {picSrc && <img className="forecast-icon" src={picSrc}></img>}
     </div>
     );
