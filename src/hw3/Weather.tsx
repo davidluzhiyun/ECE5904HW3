@@ -22,7 +22,7 @@ export function Weather(){
     <FavoriteBar weatherData={globalWeatherData} setWeatherData={setWeatherData}></FavoriteBar>
     <UnitSwitch weatherData={globalWeatherData} setWeatherData={setWeatherData}></UnitSwitch>
     <SunriseAndWind weatherData={globalWeatherData}></SunriseAndWind>
-    <ForecastBar weatherData={globalWeatherData}></ForecastBar>
+    {globalWeatherData.validZip && <ForecastBar weatherData={globalWeatherData}></ForecastBar>}
     </>
     );
 }

@@ -1,5 +1,6 @@
 import { WeatherData } from "./Weather";
 import ForecastBox from "./ForecastBox";
+import "./forecastbar.css"
 
 // Define the props interface
 interface ForecastBarProp {

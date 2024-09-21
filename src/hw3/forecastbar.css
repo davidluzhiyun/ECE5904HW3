@@ -1,0 +1,15 @@
+.forecast-bar-container{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+}
+.forecast-bar-title{
+    font-size: 14pxs;
+    align-self: center;
+    margin-bottom: 20px;
+}
+.forecast-bar-content{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+}
