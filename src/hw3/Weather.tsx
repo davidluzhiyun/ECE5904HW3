@@ -3,6 +3,7 @@ import SearchField from "./SearchField";
 import FavoriteBar from "./FavoriteBar";
 import LargeText from "./LargeText";
 import UnitSwitch from "./UnitSwitch";
+import SunriseAndWind from "./SunriseAndWind";
 
 export interface WeatherData{
     validZip:string;
@@ -19,6 +20,7 @@ export function Weather(){
     <LargeText weatherData={globalWeatherData}></LargeText>
     <FavoriteBar weatherData={globalWeatherData} setWeatherData={setWeatherData}></FavoriteBar>
     <UnitSwitch weatherData={globalWeatherData} setWeatherData={setWeatherData}></UnitSwitch>
+    <SunriseAndWind weatherData={globalWeatherData}></SunriseAndWind>
     </>
     );
 }

@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { WeatherData } from "./Weather";
-import "./largetext.css"
+import "./sunriseandwind.css"
 
 // Define the props interface
 interface SunriseAndWindProp {
@@ -36,8 +36,8 @@ export default function SunriseAndWind({ weatherData }: SunriseAndWindProp) {
             setWindDirection("-");
         }
         else{
-            setSunrise(weatherData?.payload?.forcast?.forcastday[0]?.astro?.surise);
-            setSunset(weatherData?.payload?.forcast?.forcastday[0]?.astro?.sunset);
+            setSunrise(weatherData?.payload?.forecast?.forecastday[0]?.astro?.sunrise);
+            setSunset(weatherData?.payload?.forecast?.forecastday[0]?.astro?.sunset);
             setWindDirection(weatherData?.payload?.current?.wind_dir);
             if(weatherData.metricSystemFlag){
                 setWindSpeed(weatherData?.payload?.current?.wind_kph);
@@ -49,20 +49,22 @@ export default function SunriseAndWind({ weatherData }: SunriseAndWindProp) {
     }
     ,[weatherData]);
     return(
-        <div>
-            <div>
-                <div>
-                    <div>Sunrise:</div><div>{sunrise}</div>
+        <div className="sunrise-wind-container">
+            <div className="sunrise-container">
+                <div className="sunrise-column1">
+                    <div>Sunrise:</div>
+                    <div>Sunset:</div>
                 </div>
-                <div>
-                    <div>Sunset:</div><div>{sunset}</div>
+                <div className="sunrise-column2">
+                    <div>{sunrise}</div>
+                    <div>{sunset}</div>
                 </div>
             </div>
-            <div>
-                <div>Wind</div>
-                <div>{windSpeed}</div>
-                <div>{windSpeedUnit}</div>
-                <div>{windDirection}</div>
+            <div className="wind-container">
+                <div className="wind-item">Wind</div>
+                <div className="wind-speed">{windSpeed}</div>
+                <div className="wind-unit">{windSpeedUnit}</div>
+                <div className="wind-direction">{windDirection}</div>
             </div>
         </div>
     );
