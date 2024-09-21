@@ -5,6 +5,7 @@ import LargeText from "./LargeText";
 import UnitSwitch from "./UnitSwitch";
 import SunriseAndWind from "./SunriseAndWind";
 import ForecastBar from "./ForecastBar";
+import "./weather.css"
 
 export interface WeatherData{
     validZip:string;
@@ -16,13 +17,13 @@ export function Weather(){
    const [globalWeatherData, setWeatherData] = useState<WeatherData>({validZip:"",metricSystemFlag:false,payload:undefined});
 
    
-   return (<>
+   return (<div className="canvas">
     <SearchField weatherData={globalWeatherData} setWeatherData={setWeatherData}></SearchField>
     <LargeText weatherData={globalWeatherData}></LargeText>
     <FavoriteBar weatherData={globalWeatherData} setWeatherData={setWeatherData}></FavoriteBar>
     <UnitSwitch weatherData={globalWeatherData} setWeatherData={setWeatherData}></UnitSwitch>
     <SunriseAndWind weatherData={globalWeatherData}></SunriseAndWind>
     {globalWeatherData.validZip && <ForecastBar weatherData={globalWeatherData}></ForecastBar>}
-    </>
+    </div>
     );
 }
