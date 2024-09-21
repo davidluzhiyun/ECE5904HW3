@@ -30,10 +30,10 @@ export default function ForcastBox({weatherData, dayNumber}: ForcastBoxProp) {
 
     useEffect(()=>{
         if (weatherData.validZip===""){
-            setSunrise("");
-            setSunset("");
-            setWindSpeed("");
-            setWindDirection("");
+            setDate("");
+            setHighTemp("");
+            setLowTemp("");
+            setPicSrc("");
         }
         else{
             setDate(formatDate(weatherData?.payload?.forecast?.forecastday[dayNumber]?.date));
